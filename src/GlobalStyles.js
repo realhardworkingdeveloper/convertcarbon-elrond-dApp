@@ -29,6 +29,9 @@ const styles = theme => ({
       paddingLeft: theme.spacing(4),
       marginRight: "auto",
       marginLeft: "auto",
+      [theme.breakpoints.up("xs")]: {
+        maxWidth: 320
+      },
       [theme.breakpoints.up("sm")]: {
         maxWidth: 540
       },
@@ -88,6 +91,9 @@ const styles = theme => ({
       [theme.breakpoints.down('sm')]: {
         paddingTop: `${theme.spacing(14)} !important`
       }
+    },
+    ".title-font": {
+        fontFamily: "'Orbitron', sans-serif"
     }
   }
 });
