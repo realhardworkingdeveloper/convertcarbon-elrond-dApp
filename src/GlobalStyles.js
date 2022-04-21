@@ -93,7 +93,8 @@ const styles = theme => ({
       }
     },
     ".title-font": {
-        fontFamily: "'Orbitron', sans-serif"
+        fontFamily: "'Orbitron', sans-serif",
+        color: 'white'
     }
   }
 });
