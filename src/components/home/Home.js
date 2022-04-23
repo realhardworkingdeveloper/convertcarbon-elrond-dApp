@@ -2,6 +2,7 @@ import React, { Fragment, useEffect } from "react";
 import PropTypes from "prop-types";
 import withStyles from "@mui/styles/withStyles";
 import classNames from "classnames";
+import ReactCompareImage from './ReactCompareImage';
 
 import { Box, Hidden } from "@mui/material";
 
@@ -22,7 +23,7 @@ const styles = (theme) => ({
           height: 640,
         },
         objectFit: 'cover',
-        position: 'absolute',
+        position: 'absolute !important',
         top: 0
     },
     gods: {
@@ -38,9 +39,16 @@ function Home(props) {
   useEffect(selectHome, [selectHome]);
   return (
     <Fragment>
-        <video className={classes.background} autoPlay muted loop>
+        <div className={classes.background}>
+          <ReactCompareImage
+            hover={true}
+            leftImage="assets/images/comparison/green.jpg"
+            rightImage="assets/images/comparison/wildfire.jpg"
+          />
+        </div>
+        {/* <video className={classes.background} autoPlay muted loop>
             <source src="/assets/4k-sky.mp4" type='video/mp4' />
-        </video>
+        </video> */}
         <Countdown saleStatus={"START"} remainTime={1000} />
         <Box
           display="flex"
