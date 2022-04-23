@@ -19,6 +19,7 @@ interface IProps {
   sliderLineWidth?: number;
   sliderPositionPercentage?: number;
   vertical?: boolean;
+  slope?: number;
 }
 
 const defaultProps = {
@@ -38,6 +39,7 @@ const defaultProps = {
   sliderLineWidth: 2,
   sliderPositionPercentage: 0.5,
   vertical: false,
+  slope: 0
 };
 
 const ReactCompareImage: React.FC<IProps> = props => {
@@ -60,6 +62,7 @@ const ReactCompareImage: React.FC<IProps> = props => {
     sliderLineWidth,
     sliderPositionPercentage,
     vertical,
+    slope
   } = props;
 
   const horizontal = !vertical;
@@ -250,9 +253,12 @@ const ReactCompareImage: React.FC<IProps> = props => {
       overflow: 'hidden',
     },
     rightImage: {
-      clip: horizontal
-        ? `rect(auto, auto, auto, ${containerWidth * sliderPosition}px)`
-        : `rect(${containerHeight * sliderPosition}px, auto, auto, auto)`,
+      // clip: horizontal
+      //   ? `rect(auto, auto, auto, ${containerWidth * sliderPosition}px)`
+      //   : `rect(${containerHeight * sliderPosition}px, auto, auto, auto)`,
+      clipPath: horizontal
+        ? `polygon(100% 0%, ${(sliderPosition + sliderPosition * slope) * (100)}% 0, ${(sliderPosition -  (1 - sliderPosition) * slope) * (100)}% 100%, 100% 100%)`
+        : `polygon(100% 0%, ${sliderPosition * (100 + slope)}% 0, ${sliderPosition * (100)}% 100%, 100% 100%)`,
       display: 'block',
       height: '100%',
       objectFit: 'cover',
@@ -261,9 +267,12 @@ const ReactCompareImage: React.FC<IProps> = props => {
       ...rightImageCss,
     },
     leftImage: {
-      clip: horizontal
-        ? `rect(auto, ${containerWidth * sliderPosition}px, auto, auto)`
-        : `rect(auto, auto, ${containerHeight * sliderPosition}px, auto)`,
+      // clip: horizontal
+      //   ? `rect(auto, ${containerWidth * sliderPosition}px, auto, auto)`
+      //   : `rect(auto, auto, ${containerHeight * sliderPosition}px, auto)`,
+      clipPath: horizontal
+        ? `polygon(0 0, ${(sliderPosition + sliderPosition * slope) * (100)}% 0, ${(sliderPosition -  (1 - sliderPosition) * slope) * (100)}% 100%, 0% 100%)`
+        : `polygon(0 0, ${sliderPosition * (100)}% 0, ${sliderPosition * (100 - slope)}% 100%, 0% 100%)`,
       display: 'block',
       height: '100%',
       objectFit: 'cover',
@@ -407,7 +416,7 @@ const ReactCompareImage: React.FC<IProps> = props => {
           src={leftImage}
           style={styles.leftImage}
         />
-        <div style={styles.slider}>
+        {/* <div style={styles.slider}>
           <div style={styles.line} />
           {handle ? (
             <div style={styles.handleCustom}>{handle}</div>
@@ -418,7 +427,7 @@ const ReactCompareImage: React.FC<IProps> = props => {
             </div>
           )}
           <div style={styles.line} />
-        </div>
+        </div> */}
         {/* labels */}
         {leftImageLabel && (
           <div style={styles.leftLabelContainer}>

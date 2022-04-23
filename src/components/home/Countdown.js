@@ -8,10 +8,11 @@ import { Grid, Typography,  Button, Card, Box } from "@mui/material";
 
 const styles = (theme) => ({
     card: {
-        marginTop: 100,
-        maxWidth: 600,
-        backgroundColor: 'transparent',
-        backgroundImage: 'linear-gradient(to right,transparent, rgb(0 0 0/0.5), rgb(0 0 0/0.5), transparent)',
+        // maxWidth: 600,
+        // marginTop: 100,
+        color: '#fff',
+        backgroundColor: 'rgb(0 0 0/0.5)',
+        // backgroundImage: 'linear-gradient(to right,transparent, rgb(0 0 0/0.5), rgb(0 0 0/0.5), transparent)',
         boxShadow: 'none'
     },
     countdownItem: {
@@ -78,102 +79,100 @@ function Countdown(props) {
     }, [setStatus]);
 
     return (
-        <Fragment>
-            <Box display="flex" justifyContent="center" className="row">
-                <Card
-                className={classes.card}
-                data-aos-delay="200"
-                data-aos="zoom-in" 
-                >
-                    <Grid item xs={12}>
-                        <Box
-                            display="flex"
-                            flexDirection="column"
-                            justifyContent="center"
-                            height="100%"
-                            mx={8}
-                        >
-                            {
-                                status === 'OVER' ? (
-                                    <Box mt={4}>
+        <Box display="flex" justifyContent="center" className="row" my={12}>
+            <Card
+            className={classes.card}
+            data-aos-delay="200"
+            data-aos="zoom-in" 
+            >
+                <Grid item xs={12}>
+                    <Box
+                        display="flex"
+                        flexDirection="column"
+                        justifyContent="center"
+                        height="100%"
+                        mx={8}
+                    >
+                        {
+                            status === 'OVER' ? (
+                                <Box mt={4}>
+                                    <Typography
+                                        align="center"
+                                        variant={isWidthUpLg ? "h3" : "h4"}
+                                        className={ classNames("title-font", classes.typewriter)}
+                                    >
+                                        THE SALE IS OVER
+                                    </Typography>
+                                </Box>
+                            ) : (
+                                <Fragment>
+                                    <Box mt={4} mb={2}>
                                         <Typography
                                             align="center"
                                             variant={isWidthUpLg ? "h3" : "h4"}
                                             className={ classNames("title-font", classes.typewriter)}
                                         >
-                                            THE SALE IS OVER
+                                            MINT {status} IN
                                         </Typography>
                                     </Box>
-                                ) : (
-                                    <Fragment>
-                                        <Box mt={4} mb={2}>
-                                            <Typography
-                                                align="center"
-                                                variant={isWidthUpLg ? "h3" : "h4"}
-                                                className={ classNames("title-font", classes.typewriter)}
-                                            >
-                                                MINT {status} IN
-                                            </Typography>
-                                        </Box>
-                                        { timeLeft !== undefined ?
-                                            (<Box display="flex" justifyContent="center">
-                                            
-                                                <div className={classes.countdownItem}>
-                                                    <span className={classes.countdownValue}>
-                                                        {String(timeLeft.days).padStart(2, '0')}
-                                                    </span>
-                                                    <span className={classes.countdownLabel}>Days</span>
-                                                </div>
+                                    { timeLeft !== undefined ?
+                                        (<Box display="flex" justifyContent="center">
+                                        
+                                            <div className={classes.countdownItem}>
+                                                <span className={classes.countdownValue}>
+                                                    {String(timeLeft.days).padStart(2, '0')}
+                                                </span>
+                                                <span className={classes.countdownLabel}>Days</span>
+                                            </div>
 
-                                                <div className={classes.countdownItem}>
-                                                    <span className={classes.countdownValue}>
-                                                        {String(timeLeft.hours).padStart(2, '0')}
-                                                    </span>
-                                                    <span className={classes.countdownLabel}>Hours</span>
-                                                </div>
+                                            <div className={classes.countdownItem}>
+                                                <span className={classes.countdownValue}>
+                                                    {String(timeLeft.hours).padStart(2, '0')}
+                                                </span>
+                                                <span className={classes.countdownLabel}>Hours</span>
+                                            </div>
 
-                                                <div className={classes.countdownItem}>
-                                                    <span className={classes.countdownValue}>
-                                                        {String(timeLeft.minutes).padStart(2, '0')}
-                                                    </span>
-                                                    <span className={classes.countdownLabel}>Mins</span>
-                                                </div>
+                                            <div className={classes.countdownItem}>
+                                                <span className={classes.countdownValue}>
+                                                    {String(timeLeft.minutes).padStart(2, '0')}
+                                                </span>
+                                                <span className={classes.countdownLabel}>Mins</span>
+                                            </div>
 
-                                                <div className={classes.countdownItem}>
-                                                    <span className={classes.countdownValue}>
-                                                        {String(timeLeft.seconds).padStart(2, '0')}
-                                                    </span>
-                                                    <span className={classes.countdownLabel}>Secs</span>
-                                                </div>
-                                            </Box>)
-                                            : (
-                                                <></>
-                                            )
-                                        }
-                                    </Fragment>
-                                )
-                            }
-                            <Box my={2}>
-                                <Typography
-                                    align="center"
-                                    variant={isWidthUpLg ? "h4" : "h5"}
-                                    className="title-font">
-                                    123 / 10,000
-                                </Typography>
-                            </Box>
-                            <Box
-                                mb={4}
-                                display="flex" justifyContent="center"
-                            >
-                                <Button variant="contained" width={100}>
-                                    GO to MINT 
-                                </Button>
-                            </Box>
+                                            <div className={classes.countdownItem}>
+                                                <span className={classes.countdownValue}>
+                                                    {String(timeLeft.seconds).padStart(2, '0')}
+                                                </span>
+                                                <span className={classes.countdownLabel}>Secs</span>
+                                            </div>
+                                        </Box>)
+                                        : (
+                                            <></>
+                                        )
+                                    }
+                                </Fragment>
+                            )
+                        }
+                        <Box mt={2} mb={4}>
+                            <Typography
+                                align="center"
+                                variant={isWidthUpLg ? "h4" : "h5"}
+                                className="title-font">
+                                123 / 10,000
+                            </Typography>
                         </Box>
-                    </Grid>
-                </Card>
-            </Box>
-        </Fragment>
+                        {/* <Box
+                            mb={4}
+                            display="flex" justifyContent="center"
+                        >
+                            <Button variant="contained" width={100}>
+                                GO to MINT 
+                            </Button>
+                        </Box> */}
+                    </Box>
+                </Grid>
+            </Card>
+        </Box>
     )
 }
 

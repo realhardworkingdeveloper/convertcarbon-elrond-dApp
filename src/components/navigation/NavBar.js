@@ -18,7 +18,7 @@ const styles = theme => ({
     marginTop: 3,
   },
   appBar: {
-    backgroundColor: 'rgba(17, 24, 39, 0.25)',
+    backgroundColor: 'rgba(17, 24, 39, 0.5)',
     boxShadow: 'none'
   },
   toolbar: {
@@ -54,22 +54,32 @@ function NavBar(props) {
   const menuItems = [
     {
       link: "/",
-      name: "Home",
+      name: "TOKEN SALE",
       icon: <HomeIcon className="text-white" />
     },
     {
-      link: "/nftstaking",
-      name: "NFT Staking",
+      link: "/whitepaper",
+      name: "WHITEPAPER",
       icon: <BookIcon className="text-white" />
     },
     {
-      link: "/tokenstaking",
-      name: "ELSV Staking",
+      link: "/terms",
+      name: "TERMS & CONDITIONS",
       icon: <BookIcon className="text-white" />
     },
     {
-      link: "/dex",
-      name: "DEX",
+      link: "/community",
+      name: "COMMUNITY",
+      icon: <BookIcon className="text-white" />
+    },
+    {
+      link: "/faq",
+      name: "FAQ",
+      icon: <BookIcon className="text-white" />
+    },
+    {
+      link: "/collection",
+      name: "MY COLLECTION",
       icon: <BookIcon className="text-white" />
     },
     {
